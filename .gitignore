@@ -181,3 +181,4 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+src/ASP.NET_vNext_2015_03/bower_components/
