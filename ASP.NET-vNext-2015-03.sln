@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22609.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{609203F5-A88F-4FBB-9F37-A44E1D0CC073}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E2DF73CB-F0DE-4422-8EA4-EED3DD796763}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ASP.NET_vNext_2015_03", "src\ASP.NET_vNext_2015_03\ASP.NET_vNext_2015_03.kproj", "{F3D456FE-A7F1-4F82-BB20-ED3E5EC6AEDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3D456FE-A7F1-4F82-BB20-ED3E5EC6AEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3D456FE-A7F1-4F82-BB20-ED3E5EC6AEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3D456FE-A7F1-4F82-BB20-ED3E5EC6AEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3D456FE-A7F1-4F82-BB20-ED3E5EC6AEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3D456FE-A7F1-4F82-BB20-ED3E5EC6AEDC} = {609203F5-A88F-4FBB-9F37-A44E1D0CC073}
+	EndGlobalSection
+EndGlobal
