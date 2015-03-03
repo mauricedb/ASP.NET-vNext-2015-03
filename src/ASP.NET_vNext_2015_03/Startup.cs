@@ -1,18 +1,14 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
 using System.Net;
 using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
-using Newtonsoft.Json.Serialization;
 
 namespace ASP.NET_vNext_2015_03
 {
     public class Startup
     {
+
 
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -21,6 +17,25 @@ namespace ASP.NET_vNext_2015_03
 
         public void Configure(IApplicationBuilder app)
         {
+            //app.Use(async (ctx, next) =>
+            //{
+            //    try
+            //    {
+            //        await next();
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        ctx.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            //        await ctx.Response.WriteAsync("Oops: " + ex.Message);
+            //    }
+            //});
+
+            app.UseErrorPage();
+
+            //app.Use((ctx, next) => { throw new DivideByZeroException(); });
+
+            app.UseWelcomePage();
         }
     }
 }
