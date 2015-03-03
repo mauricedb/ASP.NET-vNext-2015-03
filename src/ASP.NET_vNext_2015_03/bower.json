@@ -10,9 +10,6 @@
             "js": "dist/js/*.*",
             "css": "dist/css/*.*",
             "fonts": "dist/fonts/*.*"
-        },
-        "jquery": {
-            "js": "jquery.{js,min.js,min.map}"
         }
     }
 }
