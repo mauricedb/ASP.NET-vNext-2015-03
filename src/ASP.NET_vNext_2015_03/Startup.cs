@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using ASP.NET_vNext_2015_03.Models;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.Framework.DependencyInjection;
@@ -14,6 +15,7 @@ namespace ASP.NET_vNext_2015_03
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton<IBooksRepository, BooksRepository>();
         }
 
         public void Configure(IApplicationBuilder app)

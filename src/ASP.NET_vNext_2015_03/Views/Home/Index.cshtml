@@ -1,4 +1,6 @@
-﻿@{
+﻿@addtaghelper "Microsoft.AspNet.Mvc.TagHelpers"
+
+@{
     Layout = null;
 }
 
@@ -11,9 +13,10 @@
 <body>
     <h1>Hello WROC# 2015 from an MVC controller</h1>
 <div>
-
     @Html.ActionLink("MVC Books", "Books")
     <br/>
+    <a asp-action="Books">MVC Books with a Tag Helper </a>
+    <br />
     <a href="/jBooks.html">REST Books</a>
 </div>
 </body>
