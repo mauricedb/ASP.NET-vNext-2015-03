@@ -2,18 +2,26 @@
 using System.IO;
 using System.Linq;
 using System.Net;
+using ASP.NET_vNext_2015_03.Formatters;
 using ASP.NET_vNext_2015_03.Models;
 using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
+using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Serialization;
 
 namespace ASP.NET_vNext_2015_03
 {
     public class Startup
     {
+        private readonly IHostingEnvironment _hostingEnvironment;
 
+        public Startup(IHostingEnvironment hostingEnvironment)
+        {
+            _hostingEnvironment = hostingEnvironment;
+        }
 
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -28,6 +36,9 @@ namespace ASP.NET_vNext_2015_03
                 jsonOutputFormatter.SerializerSettings.ContractResolver =
                     new CamelCasePropertyNamesContractResolver();
 
+                var jpegMediaTypeOutputFormatter =
+                     new JpegBookOutputFormatter(Path.Combine(_hostingEnvironment.WebRoot, @"..\Images"));
+                options.OutputFormatters.Insert(0, jpegMediaTypeOutputFormatter);
             });
         }
 

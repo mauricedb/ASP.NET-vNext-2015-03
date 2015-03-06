@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ASP.NET_vNext_2015_03.Formatters;
 using ASP.NET_vNext_2015_03.Models;
 using Microsoft.AspNet.Mvc;
 
@@ -32,6 +33,5 @@ namespace ASP.NET_vNext_2015_03.Api
 
             return new ObjectResult(book);
         }
-
     }
 }
