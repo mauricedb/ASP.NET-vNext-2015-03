@@ -1,9 +1,13 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Net;
 using ASP.NET_vNext_2015_03.Models;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
+using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 
 namespace ASP.NET_vNext_2015_03
 {
@@ -16,6 +20,15 @@ namespace ASP.NET_vNext_2015_03
         {
             services.AddMvc();
             services.AddSingleton<IBooksRepository, BooksRepository>();
+
+            services.Configure<MvcOptions>(options =>
+            {
+                var jsonOutputFormatter =
+                    (JsonOutputFormatter)options.OutputFormatters.First(f => f.Instance is JsonOutputFormatter).Instance;
+                jsonOutputFormatter.SerializerSettings.ContractResolver =
+                    new CamelCasePropertyNamesContractResolver();
+
+            });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -49,7 +62,7 @@ namespace ASP.NET_vNext_2015_03
                 // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
 
-            app.UseWelcomePage();
+            //app.UseWelcomePage();
         }
     }
 }
