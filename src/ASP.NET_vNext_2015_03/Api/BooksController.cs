@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using ASP.NET_vNext_2015_03.Formatters;
 using ASP.NET_vNext_2015_03.Models;
 using Microsoft.AspNet.Mvc;
 
@@ -33,5 +33,22 @@ namespace ASP.NET_vNext_2015_03.Api
 
             return new ObjectResult(book);
         }
+
+
+        // POST api/books
+        public async Task Post(Book newBook)
+        {
+            try
+            {
+                var book = await _repo.AddBook(newBook);
+
+                CreatedAtRoute("GetByIdRoute", new { id = book.Id });
+            }
+            catch (ValidationException ex)
+            {
+                HttpBadRequest(new { ex.Message });
+            }
+        }
+
     }
 }
