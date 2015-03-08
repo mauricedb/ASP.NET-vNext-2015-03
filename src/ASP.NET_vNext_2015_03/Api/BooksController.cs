@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Threading.Tasks;
 using ASP.NET_vNext_2015_03.Models;
 using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.ModelBinding;
 
 namespace ASP.NET_vNext_2015_03.Api
 {
     [Route("api/[controller]")]
     public class BooksController : Controller
     {
-        private IBooksRepository _repo;
+        private readonly IBooksRepository _repo;
 
         public BooksController(IBooksRepository repo)
         {
@@ -35,7 +35,6 @@ namespace ASP.NET_vNext_2015_03.Api
             return new ObjectResult(book);
         }
 
-
         // POST api/books
         public async Task Post(Book newBook)
         {
@@ -54,7 +53,7 @@ namespace ASP.NET_vNext_2015_03.Api
             }
             catch (ValidationException ex)
             {
-                HttpBadRequest(new { ex.Message });
+                HttpBadRequest(new {ex.Message});
             }
         }
 
@@ -77,7 +76,7 @@ namespace ASP.NET_vNext_2015_03.Api
             }
             catch (ValidationException ex)
             {
-                HttpBadRequest(new { ex.Message });
+                HttpBadRequest(new {ex.Message});
             }
         }
 
@@ -87,11 +86,11 @@ namespace ASP.NET_vNext_2015_03.Api
             {
                 await _repo.DeleteBook(id);
 
-                Response.StatusCode = (int)HttpStatusCode.NoContent;
+                Response.StatusCode = (int) HttpStatusCode.NoContent;
             }
             catch (ValidationException ex)
             {
-                HttpBadRequest(new { ex.Message });
+                HttpBadRequest(new {ex.Message});
             }
         }
     }
