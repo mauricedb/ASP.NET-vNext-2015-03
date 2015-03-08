@@ -81,5 +81,18 @@ namespace ASP.NET_vNext_2015_03.Api
             }
         }
 
+        public async Task Delete(int id)
+        {
+            try
+            {
+                await _repo.DeleteBook(id);
+
+                Response.StatusCode = (int)HttpStatusCode.NoContent;
+            }
+            catch (ValidationException ex)
+            {
+                HttpBadRequest(new { ex.Message });
+            }
+        }
     }
 }
