@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using ASP.NET_vNext_2015_03.Models;
 using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Mvc.ModelBinding;
 
 namespace ASP.NET_vNext_2015_03.Api
 {
@@ -40,9 +41,39 @@ namespace ASP.NET_vNext_2015_03.Api
         {
             try
             {
-                var book = await _repo.AddBook(newBook);
+                if (ModelState.IsValid)
+                {
+                    var book = await _repo.AddBook(newBook);
 
-                CreatedAtRoute("GetByIdRoute", new { id = book.Id });
+                    CreatedAtRoute("GetByIdRoute", new {id = book.Id});
+                }
+                else
+                {
+                    HttpBadRequest(ModelState);
+                }
+            }
+            catch (ValidationException ex)
+            {
+                HttpBadRequest(new { ex.Message });
+            }
+        }
+
+        public async Task Put(int id, Book newBook)
+        {
+            try
+            {
+                if (newBook.Id != id)
+                {
+                    throw new ValidationException("Invalid book ID.");
+                }
+                if (ModelState.IsValid)
+                {
+                    await _repo.UpdateBook(newBook);
+                }
+                else
+                {
+                    HttpBadRequest(ModelState);
+                }
             }
             catch (ValidationException ex)
             {
