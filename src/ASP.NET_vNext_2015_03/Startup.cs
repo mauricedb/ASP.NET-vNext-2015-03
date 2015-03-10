@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using ASP.NET_vNext_2015_03.Formatters;
 using ASP.NET_vNext_2015_03.Models;
 using Microsoft.AspNet.Builder;
@@ -44,19 +45,7 @@ namespace ASP.NET_vNext_2015_03
 
         public void Configure(IApplicationBuilder app)
         {
-            //app.Use(async (ctx, next) =>
-            //{
-            //    try
-            //    {
-            //        await next();
-
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        ctx.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            //        await ctx.Response.WriteAsync("Oops: " + ex.Message);
-            //    }
-            //});
+            //AddCustomErrorPage(app);
 
             app.UseErrorPage();
 
@@ -73,7 +62,24 @@ namespace ASP.NET_vNext_2015_03
                 // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
 
+            //app.UseStaticFiles();
             //app.UseWelcomePage();
+        }
+
+        private static IApplicationBuilder AddCustomErrorPage(IApplicationBuilder app)
+        {
+            return app.Use(async (ctx, next) =>
+            {
+                try
+                {
+                    await next();
+                }
+                catch (Exception ex)
+                {
+                    ctx.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                    await ctx.Response.WriteAsync("Oops: " + ex.Message);
+                }
+            });
         }
     }
 }
