@@ -47,9 +47,12 @@ namespace ASP.NET_vNext_2015_03
         {
             //AddCustomErrorPage(app);
 
-            app.UseErrorPage();
+            //app.UseErrorPage();
 
             //app.Use((ctx, next) => { throw new DivideByZeroException(); });
+
+            //app.UseWelcomePage();
+            return;
 
             app.UseMvc(routes =>
             {
@@ -63,7 +66,6 @@ namespace ASP.NET_vNext_2015_03
             });
 
             //app.UseStaticFiles();
-            //app.UseWelcomePage();
         }
 
         private static IApplicationBuilder AddCustomErrorPage(IApplicationBuilder app)

@@ -11,13 +11,11 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Hello WROC# 2015 from an MVC controller</h1>
+    <h1>Hello WROC# 2015 from a bare MVC controller</h1>
 <div>
-    @Html.ActionLink("MVC Books", "Books")
-    <br/>
-    <a asp-action="Books">MVC Books with a Tag Helper</a>
+    <a asp-action="Index" asp-controller="Home">Home</a>
     <br />
-    <a asp-action="Index" asp-controller="Bare">Bare controller</a>
+    <a asp-action="Books">MVC Books</a>
     <br />
     <a href="/jBooks.html">REST Books</a>
 </div>

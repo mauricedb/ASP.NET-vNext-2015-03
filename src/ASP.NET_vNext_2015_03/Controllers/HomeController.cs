@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ASP.NET_vNext_2015_03.Models;
 using Microsoft.AspNet.Mvc;
 
@@ -22,11 +21,7 @@ namespace ASP.NET_vNext_2015_03.Controllers
 
         public async Task<IActionResult> Books()
         {
-            //using (var repo = new BooksRepository())
-            //{
             return View(await _repo.GetBooks());
-
-            //}
         }
     }
 }

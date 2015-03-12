@@ -44,7 +44,7 @@ namespace ASP.NET_vNext_2015_03.Api
                 {
                     var book = await _repo.AddBook(newBook);
 
-                    CreatedAtRoute("GetByIdRoute", new {id = book.Id});
+                    CreatedAtRoute("GetByIdRoute", new { id = book.Id });
                 }
                 else
                 {
@@ -53,7 +53,7 @@ namespace ASP.NET_vNext_2015_03.Api
             }
             catch (ValidationException ex)
             {
-                HttpBadRequest(new {ex.Message});
+                HttpBadRequest(new { ex.Message });
             }
         }
 
@@ -76,7 +76,7 @@ namespace ASP.NET_vNext_2015_03.Api
             }
             catch (ValidationException ex)
             {
-                HttpBadRequest(new {ex.Message});
+                HttpBadRequest(new { ex.Message });
             }
         }
 
@@ -86,11 +86,11 @@ namespace ASP.NET_vNext_2015_03.Api
             {
                 await _repo.DeleteBook(id);
 
-                Response.StatusCode = (int) HttpStatusCode.NoContent;
+                Response.StatusCode = (int)HttpStatusCode.NoContent;
             }
             catch (ValidationException ex)
             {
-                HttpBadRequest(new {ex.Message});
+                HttpBadRequest(new { ex.Message });
             }
         }
     }
