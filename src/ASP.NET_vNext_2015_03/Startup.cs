@@ -43,6 +43,9 @@ namespace ASP.NET_vNext_2015_03
             });
         }
 
+
+
+
         public void Configure(IApplicationBuilder app)
         {
             //AddCustomErrorPage(app);
@@ -52,7 +55,7 @@ namespace ASP.NET_vNext_2015_03
             //app.Use((ctx, next) => { throw new DivideByZeroException(); });
 
             //app.UseWelcomePage();
-            return;
+            //return;
 
             app.UseMvc(routes =>
             {
