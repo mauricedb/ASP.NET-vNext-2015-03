@@ -1,0 +1,9 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "src/ASP.NET_vNext_2015_03/package.json"
+      ]
+    }
+  }
+}
